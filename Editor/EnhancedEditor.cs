@@ -9,6 +9,7 @@ namespace EnhancedUnityEditor
     public class EnhancedEditor : Editor
     {
         private Method[] publicMethods = new Method[0];
+        private bool showPublicMethods = false;
 
         private void OnEnable()
         {
@@ -25,10 +26,11 @@ namespace EnhancedUnityEditor
         {
             base.OnInspectorGUI();
 
-            EditorGUILayout.LabelField("Public Methods");
-            foreach (var method in publicMethods)
+            showPublicMethods = EditorGUILayout.Foldout(showPublicMethods, "Public Methods");
+            if (showPublicMethods)
             {
-                method.Draw();
+                foreach (var method in publicMethods)
+                    method.Draw();
             }
         }
     }
