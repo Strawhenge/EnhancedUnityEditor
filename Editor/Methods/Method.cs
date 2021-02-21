@@ -28,18 +28,13 @@ namespace EnhancedUnityEditor.Methods
 
         public void Draw()
         {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField(name, EditorStyles.boldLabel);
-
-            if (GUILayout.Button("Invoke"))
-                Invoke();
-
-            EditorGUILayout.EndHorizontal();
-
             foreach (var parameter in parameters)
             {
                 parameter.Draw();
             }
+
+            if (GUILayout.Button(name))
+                Invoke();
 
             EditorGUILayout.Space();
         }
